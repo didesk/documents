@@ -1,0 +1,121 @@
+<!--<h4>Formularios <small>data</small></h4>
+<hr>-->
+<!--en este caso el novalidate estaría de más ya que se encarga directamente angular al asignar la validacion en el codigo de logica-->
+<form [formGroup]="forma" (ngSubmit)="guardarCambios()">
+
+  <div formGroupName="nombrecompleto">  
+      <!--el array del formGroup se puede recorrer de diversas formas-->
+      <!--[ngClass]="{'has-danger': !forma.get('nombre').valid}"-->
+    <div class="form-group row" [ngClass]="{'has-danger': !forma.controls['nombrecompleto'].controls['nombre'].valid}" >
+      <!--<label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">-->
+
+        <input class="form-control"
+               type="text"
+               placeholder="Nombre"
+               formControlName="nombre">
+          <div *ngIf="forma.get('nombrecompleto.nombre').errors?.required" 
+               class="form-control-feedback">
+               El nombre es requerido
+          </div>
+          <div *ngIf="forma.get('nombrecompleto.apellido').errors?.minlength" 
+               class="form-control-feedback">
+               Por lo menos tres caracteres
+          <!--</div>
+      </div>
+    </div>-->
+
+    <!--<div class="form-group row">
+      <label class="col-2 col-form-label">Apellido</label>
+      <div class="col-8">-->
+
+        <input class="form-control"
+               type="text"
+               placeholder="Apellido"
+               formControlName="apellido">
+      <!--</div>
+    </div>
+
+  </div>-->
+
+  <!--<div class="form-group row">
+    <label class="col-2 col-form-label">Correo</label>
+    <div class="col-md-8">-->
+
+      <input class="form-control"
+             type="email"
+             placeholder="Correo electrónico"
+             formControlName="correo">
+    <!--</div>
+  </div>-->
+
+  <!--<div class="form-group row">
+    <label class="col-2 col-form-label">Pasatiempos</label>-->
+    <div class="col-8" formArrayName="pasatiempos">
+
+      <input *ngFor="let pasatiempo of forma.controls['pasatiempos'].controls; let i = index" 
+             class="form-control" 
+             type="text" 
+             [formControlName]="i">
+    <!--</div>
+
+    <button type="button" 
+            class="btn btn-primary"
+            (click)="agregarPasatiempo()">nuevo</button>
+  </div>-->
+
+
+  <!--<div class="form-group row">
+    <label class="col-md-2 col-form-label">username</label>
+    <div class="col-md-8" >-->
+
+      <input class="form-control" 
+             type="text"
+             placeholder="Nombre de usuario"
+             formControlName="username">
+    <!--</div>
+  </div>-->
+
+
+  <!--<div class="form-group row">
+    <label class="col-md-2 col-form-label">password</label>
+    <div class="col-md-8" >-->
+
+      <input class="form-control" 
+             type="password"
+             placeholder="contraseña"
+             formControlName="password1">
+    <!--</div>
+  </div>-->
+
+
+  <!--<div class="form-group row">
+    <label class="col-md-2 col-form-label">repetir password</label>
+    <div class="col-md-8" >-->
+
+      <input class="form-control" 
+             type="password"
+             placeholder="Repetir contraseña"
+             formControlName="password2">
+    <!--</div>
+  </div>-->
+
+
+  <!--<div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">-->
+      <button type="submit" class="btn btn-outline-primary">
+        Guardar
+      </button>
+    <!--</div>
+  </div>-->
+
+  {{forma.valid}} <br>
+  {{forma.status }}
+
+</form>
+
+
+
+
+

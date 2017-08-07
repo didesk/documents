@@ -1,0 +1,32 @@
+<!--<p>
+  clases works!
+</p>-->
+
+<div [ngClass]="'alert-info'"  class="alert " role="alert"> 
+  <strong>Title!</strong> Alert body is read this important alert message
+</div>
+<div [ngClass]="alerta"  class="alert " role="alert"> 
+  <strong>Title!</strong> Alert body is read this important alert message
+</div>
+<!--<button type="button" (click)="alerta = 'alert-info'" class="btn btn-info">Info</button>
+<button type="button" (click)="alerta = 'alert-success'" class="btn btn-success">Success</button>-->
+
+<h3 class="mt-5" [ngClass]="{'text-danger': false }">Hola mundo</h3>
+<h3 class="mt-1" [ngClass]="{'text-danger': propiedades.danger, 'text-info': !propiedades.danger }">Hola mundo</h3>
+
+
+<button type="button" class="btn btn-danger" (click)="propiedades.danger = !propiedades.danger" [ngClass]="{'btn-danger': propiedades.danger, 'btn-info': !propiedades.danger}">Cambiar</button>
+
+<h3 class="mt-5">Proceso asíncrono</h3>
+<button
+  (click)="ejecutar()"
+  class="btn btn-primary "
+  type="button" name="button"
+  [disabled]="cargando"
+  >
+  <i 
+  [ngClass]="{'fa-save': !cargando, 'fa-spin fa-refresh': cargando}"
+  class="fa"></i>
+  <span *ngIf="!cargando" >Guardar cambios</span>
+  <span *ngIf="cargando">Espere por favor</span>
+</button>
